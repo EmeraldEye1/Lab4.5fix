@@ -1,13 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import EventListView from '../views/EventListView.vue'
 import AboutView from '../views/AboutView.vue'
-// import EventDetails from '../views/EventDetailView.vue'
 import EventDetails from '@/views/event/EventDetailView.vue'
 import EventRegister from '@/views/event/EventRegister.vue'
 import EventEdit from '@/views/event/EditView.vue'
 import Eventlayout from '@/views/event/EventLayoutView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import NetWorkError from '@/views/NetworkErrorView.vue'
+import EventAirlineDetail from '@/views/event/EventAirlineDetail.vue'
+
 const routes = [
   {
     path: '/',
@@ -15,7 +16,7 @@ const routes = [
     component: EventListView,
     props: (route) => ({
       page: parseInt(route.query.page) || 1,
-      morepage: parseInt(route.query.morepage) || 1
+      morepage: parseInt(route.query.morepage) || 5
     })
   },
   {
@@ -23,7 +24,6 @@ const routes = [
     name: 'about',
     component: AboutView
   },
-
   {
     path: '/event/:id',
     name: 'EventLayout',
@@ -34,6 +34,11 @@ const routes = [
         path: '',
         name: 'EventDetails',
         component: EventDetails
+      },
+      {
+        path: 'airlineDetails',
+        name: 'EventAirlineDetail',
+        component: EventAirlineDetail
       },
       {
         path: 'register',

@@ -1,10 +1,11 @@
 <template>
   <router-link
     class="event-link"
-    :to="{ name: 'EventDetails', params: { id: event._id } }"
+    :to="{ name: 'EventDetails', params: { id: event.id } }"
   >
     <div class="event-card">
-      <h1>{{ event.name }}</h1>
+      <h3>ID# {{ event.id }}</h3>
+      <h3>{{ event.first_name }} {{ event.last_name }}</h3>
     </div>
   </router-link>
 </template>
@@ -13,6 +14,10 @@ export default {
   name: 'EventCard',
   props: {
     event: {
+      type: Object,
+      required: true
+    },
+    air: {
       type: Object,
       required: true
     }

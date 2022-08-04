@@ -1,14 +1,11 @@
 <template>
   <h1>Events For Good</h1>
   <div class="events">
-    <template v-for="passenger in events">
-      <EventCard
-        v-for="event in passenger.data"
-        :key="event._id"
-        :event="event"
-      ></EventCard>
-    </template>
-
+    <EventCard
+      v-for="event in events"
+      :key="event.id"
+      :event="event"
+    ></EventCard>
     <div class="pagination">
       <router-link
         id="page-prev"
@@ -62,7 +59,7 @@ export default {
   },
   created() {
     watchEffect(() => {
-      EventService.getEventsPassenger()
+      EventService.getEvents(this.morepage, this.page)
         .then((response) => {
           this.events = response.data
           this.totalEvents = response.headers['x-total-count'] // <--- Store it
