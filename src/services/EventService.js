@@ -8,12 +8,11 @@ const apiClient = axios.create({
     'Content-Type': 'application/json'
   }
 })
-
 export default {
   getEvents(perPage, page) {
     return apiClient.get('/passenger?page=' + page + '&size=' + perPage)
   },
-
+  //Added new call
   getEvent(id) {
     return apiClient.get('/passenger/' + id)
   },
